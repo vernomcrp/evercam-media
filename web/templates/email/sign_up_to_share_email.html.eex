@@ -29,8 +29,8 @@
 <table class="head-wrap" bgcolor="#f5f5f5" style="width: 100%; margin: 0; padding: 0;">
   <tr style="margin: 0; padding: 0;">
     <td style="margin: 0; padding: 0;"></td>
-    <td class="header container" style="display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 0;">
-      <div class="content" style="max-width: 600px; display: block; margin: 0 auto; padding: 15px;">
+    <td class="header container" style="display: block !important; clear: both !important; margin: 0 auto; padding: 0;">
+      <div class="content" style="display: block; margin: 0 auto; padding: 15px;">
         <table bgcolor="#f5f5f5" style="width: 100%; margin: 0; padding: 0;">
           <tr style="margin: 0; padding: 0;text-align:center;">
             <td style="margin: 0; padding: 0;">
@@ -47,9 +47,9 @@
 <!-- BODY -->
 <table class="body-wrap" style="font-family: Arial, Helvetica, sans-serif; width: 100%; margin: 0; background-color:#f5f5f5; padding: 0;">
   <tr style="font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0;"><td style="font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0;"></td>
-    <td class="container" bgcolor="#FFFFFF" style="font-family: Arial, Helvetica, sans-serif; display: block !important; border-radius:3px; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 0;">
+    <td class="container" bgcolor="#FFFFFF" style="font-family: Arial, Helvetica, sans-serif; display: block !important; border-radius:3px; clear: both !important; margin: 0 auto; padding: 0;">
 
-      <div class="content" style="font-family: Arial, Helvetica, sans-serif; max-width: 600px; display: block; margin: 0 auto; padding: 15px;">
+      <div class="content" style="font-family: Arial, Helvetica, sans-serif; display: block; margin: 0 auto; padding: 15px;">
         <table style="font-family: Arial, Helvetica, sans-serif; width: 100%; margin: 0; padding: 0;"><tr style="font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0;">
           <td style="font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 14px; margin: 0; padding: 0;">
 
@@ -70,7 +70,7 @@
             </p><!-- /Callout Panel -->
             <%= if @thumbnail_available do %>
             <br>
-            <img src="cid:snapshot.jpg" alt='Camera Preview' style="max-width: 550px; display:block; margin:0 auto;" >
+            <img src="cid:snapshot.jpg" alt='Camera Preview' style="width: 100%; display:block; margin:0 auto;" >
             <% end %>
             <br>
             <p style="line-height: 1.6; margin: 0 0 10px; padding: 0;">Your Evercam account will give you access to this camera and a whole world of possibilities for cameras!</p>
@@ -90,7 +90,7 @@
 <!-- FOOTER -->
 <table class="footer-wrap" style="background-color:#f5f5f5; font-family: Arial, Helvetica, sans-serif; width: 100%; clear: both !important; margin: 0; padding: 0;">
   <tr style="margin: 0; padding: 0;"><td style="font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0;"></td>
-    <td class="container" style="text-align:center; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 0;">
+    <td class="container" style="text-align:center; display: block !important; clear: both !important; margin: 0 auto; padding: 0;">
       <p style="color:#aaaaaa; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 12px; line-height: 1.0; margin: 10px 0 40px; padding: 0;">
         <a href="https://play.google.com/store/apps/details?id=io.evercam.androidapp&hl=en" style="text-decoration: none;"><img src="https://evercam.io/img/google_play_download.png" width="150" height="49"/></a>&nbsp;&nbsp;&nbsp;
         <a href="https://itunes.apple.com/ie/app/evercam-play-ip-camera-viewer/id983189658?mt=8" style="text-decoration: none;"><img src="https://evercam.io/img/app-ios-icon.png" width="150" height="49"/></a>
@@ -98,7 +98,7 @@
     </td>
   </tr>
   <tr style="margin: 0; padding: 0;"><td style="font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0;"></td>
-    <td class="container" style="text-align:center; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 0;">
+    <td class="container" style="text-align:center; display: block !important; clear: both !important; margin: 0 auto; padding: 0;">
       <p style="color:#aaaaaa; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 12px; line-height: 1.0; margin: 10px 0 40px; padding: 0;">&copy; <%= @year %>    <a href="https://www.evercam.io" style="color:#428bca;text-decoration: none;">www.evercam.io</a></p>
     </td>
   </tr>
