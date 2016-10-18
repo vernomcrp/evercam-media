@@ -29,8 +29,8 @@
 <table class="head-wrap" bgcolor="#f5f5f5" style="width: 100%; margin: 0; padding: 0;">
   <tr style="margin: 0; padding: 0;">
     <td style="margin: 0; padding: 0;"></td>
-    <td class="header container" style="display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 0;">
-      <div class="content" style="max-width: 600px; display: block; margin: 0 auto; padding: 15px;">
+    <td class="header container" style="display: block !important; clear: both !important; margin: 0 auto; padding: 0;">
+      <div class="content" style="display: block; margin: 0 auto; padding: 15px;">
         <table bgcolor="#f5f5f5" style="width: 100%; margin: 0; padding: 0;">
           <tr style="margin: 0; padding: 0;text-align:center;">
             <td style="margin: 0; padding: 0;">
@@ -47,7 +47,7 @@
 <!-- BODY -->
 <table class="body-wrap" style="font-family: Arial, Helvetica, sans-serif; width: 100%; margin: 0; background-color:#f5f5f5; padding: 0;">
   <tr style="font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0;"><td style="font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0;"></td>
-    <td class="container" bgcolor="#FFFFFF" style="font-family: Arial, Helvetica, sans-serif; display: block !important; border-radius:3px; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 0;">
+    <td class="container" bgcolor="#FFFFFF" style="font-family: Arial, Helvetica, sans-serif; display: block !important; border-radius:3px; clear: both !important; margin: 0 auto; padding: 0;">
 
       <div class="content" style="font-family: Arial, Helvetica, sans-serif; max-width: 600px; display: block; margin: 0 auto; padding: 15px;">
         <table style="font-family: Arial, Helvetica, sans-serif; width: 100%; margin: 0; padding: 0;"><tr style="font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0;">
@@ -63,7 +63,7 @@
             </p><!-- /Callout Panel -->
             <%= if @thumbnail_available do %>
             <br>
-            <img src="cid:snapshot.jpg" alt='Last Snapshot' style="max-width: 550px; display:block; margin:0 auto;">
+            <img src="cid:snapshot.jpg" alt='Last Snapshot' style="width: 100%; display:block; margin:0 auto;">
             <% end %>
             <br>
             <p style="line-height: 1.6; margin: 0 0 10px; padding: 0;">We greatly appreciate any feedback, so if you have any suggestions or if there is anything we can do to improve your Evercam experience, please let us know.</p><br>
@@ -83,7 +83,7 @@
 <!-- FOOTER -->
 <table class="footer-wrap" style="background-color:#f5f5f5; font-family: Arial, Helvetica, sans-serif; width: 100%; clear: both !important; margin: 0; padding: 0;">
   <tr style="margin: 0; padding: 0;"><td style="font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0;"></td>
-    <td class="container" style="text-align:center; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 0;">
+    <td class="container" style="text-align:center; display: block !important; clear: both !important; margin: 0 auto; padding: 0;">
 
       <p style="color:#aaaaaa; font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 12px; line-height: 1.0; margin: 10px 0 40px; padding: 0;">&copy; <%= @year %><a href="http://www.evercam.io" style="color:#428bca;text-decoration: none;">www.evercam.io</a></p>
 
