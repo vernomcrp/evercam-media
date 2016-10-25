@@ -298,11 +298,11 @@ defmodule EvercamMedia.CameraController do
     |> add_parameter("host", "internal_host", params["internal_host"])
     |> add_parameter("host", "internal_http_port", params["internal_http_port"])
     |> add_parameter("host", "internal_rtsp_port", params["internal_rtsp_port"])
-    |> add_parameter("url", "jpg", params["jpg_url"])
-    |> add_parameter("url", "mjpg", params["mjpg_url"])
-    |> add_parameter("url", "h264", params["h264_url"])
-    |> add_parameter("url", "audio", params["audio_url"])
-    |> add_parameter("url", "mpeg", params["mpeg_url"])
+    |> add_url_parameter(model.exid, "jpg", VendorModel.get_url(model), params["jpg_url"])
+    |> add_url_parameter(model.exid, "mjpg", VendorModel.get_url(model, "mjpg"), params["mjpg_url"])
+    |> add_url_parameter(model.exid, "h264", VendorModel.get_url(model, "h264"), params["h264_url"])
+    |> add_url_parameter(model.exid, "audio", model.audio_url, params["audio_url"])
+    |> add_url_parameter(model.exid, "mpeg", VendorModel.get_url(model, "mpeg4"), params["mpeg_url"])
     |> add_parameter("auth", "username", params["cam_username"])
     |> add_parameter("auth", "password", params["cam_password"])
   end
@@ -328,6 +328,15 @@ defmodule EvercamMedia.CameraController do
         params
       end
     put_in(params, [:config, "auth", "basic", key], value)
+  end
+
+  defp add_url_parameter(params, "other_default", _key, _value, nil), do: params
+  defp add_url_parameter(params, _model, _key, nil, _custom_value), do: params
+  defp add_url_parameter(params, "other_default", key, _value, custom_value) do
+    put_in(params, [:config, "snapshots", key], custom_value)
+  end
+  defp add_url_parameter(params, _model, key, value, _custom_value) do
+    put_in(params, [:config, "snapshots", key], value)
   end
 
   defp delete_camera_worker(camera) do
