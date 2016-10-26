@@ -330,7 +330,7 @@ defmodule EvercamMedia.CameraController do
     put_in(params, [:config, "auth", "basic", key], value)
   end
 
-  defp add_url_parameter(params, nil, type, attr, custom_value), do: params
+  defp add_url_parameter(params, nil, _type, _attr, _custom_value), do: params
   defp add_url_parameter(params, model, type, attr, custom_value) do
     params
     |> do_add_url_parameter(model.exid, type, VendorModel.get_url(model, attr), custom_value)
