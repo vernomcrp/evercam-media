@@ -13,6 +13,8 @@ defmodule EvercamMedia.CameraControllerTest do
     user_b = Repo.insert!(%User{firstname: "Smith", lastname: "Marc", username: "smithmarc", email: "smith@dmarc.com", password: "password456", country_id: country.id, api_id: UUID.uuid4(:hex), api_key: UUID.uuid4(:hex)})
     _access_token2 = Repo.insert!(%AccessToken{user_id: user_b.id, request: UUID.uuid4(:hex), is_revoked: false})
     camera = Repo.insert!(%Camera{owner_id: user.id, name: "Austin", exid: "austin", is_public: false, config: %{"external_host" => "192.168.1.100", "external_http_port" => "80"}})
+    vendor = Repo.insert!(%Vendor{exid: "other", name: "Other", known_macs: []})
+    vendor_model = Repo.insert!(%VendorModel{vendor_id: vendor.id, name: "Default", exid: "other_default", config: %{}})
 
     now = Calendar.DateTime.now!("UTC")
     if context[:thumbnail] do
