@@ -221,7 +221,7 @@ defmodule Camera do
 
   def get_hls_url(camera) do
     if rtsp_url(camera) != "" do
-      base_url = EvercamMedia.Endpoint.url
+      base_url = EvercamMedia.Endpoint.static_url
       base_url <> "/live/" <> streaming_token(camera) <> "/index.m3u8?camera_id=" <> camera.exid
     else
       ""
