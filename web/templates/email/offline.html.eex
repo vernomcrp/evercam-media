@@ -54,7 +54,7 @@
           <td style="font-family: Arial, Helvetica, sans-serif; font-weight: normal; font-size: 14px; margin: 0; padding: 0;">
 
             <p class="lead" style="line-height: 1.6; margin: 0 0 10px; padding: 0;">Hi <%= full_name(@user) %>, </p>
-            <p style="line-height: 1.6; margin: 0 0 10px; padding: 0;">Your camera "<%= @camera.name %>" went offline.</p>
+            <p style="line-height: 1.6; margin: 0 0 10px; padding: 0;">Your camera "<%= @camera.name %>" went offline at <%= @current_time %>.</p>
 
             <p style="line-height: 1.6; margin: 0 0 10px; padding: 0;">Click on the link below to access this camera.</p>
             <!-- Callout Panel -->

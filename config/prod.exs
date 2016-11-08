@@ -73,6 +73,12 @@ config :quantum,
       overlap: false
     ]
   ]
+  offline_reminder: [
+      task: {"EvercamMedia.OfflinePeriodicReminder", "offline_cameras_reminder"},
+      schedule: "@hourly",
+      overlap: false
+    ]
+  ]
 
 config :evercam_media, :mailgun,
   domain: System.get_env("MAILGUN_DOMAIN"),

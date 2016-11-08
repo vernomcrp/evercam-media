@@ -44,6 +44,14 @@ defmodule Camera do
     |> Repo.all
   end
 
+  def all_offline do
+    Camera
+    |> where(exid: ^"shigan-rjm")
+    |> where(is_online: false)
+    |> preload(:owner)
+    |> Repo.all
+  end
+
   def invalidate_user(nil), do: :noop
   def invalidate_user(%User{} = user) do
     ConCache.delete(:cameras, "#{user.username}_true")
