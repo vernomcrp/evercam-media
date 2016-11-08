@@ -46,7 +46,6 @@ defmodule Camera do
 
   def all_offline do
     Camera
-    |> where(exid: ^"shigan-rjm")
     |> where(is_online: false)
     |> preload(:owner)
     |> Repo.all
