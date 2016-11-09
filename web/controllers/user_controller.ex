@@ -114,13 +114,13 @@ defmodule EvercamMedia.UserController do
     end
   end
 
-  def ensure_application(conn, token) when token in [nil, ""], do: render_error(conn, 404, "Invalid token.")
+  def ensure_application(conn, token) when token in [nil, ""], do: render_error(conn, 400, "Invalid token.")
   def ensure_application(conn, token) do
     cond do
        System.get_env["WEB_APP"] == token -> :ok
        System.get_env["IOS_APP"] == token -> :ok
        System.get_env["ANDROID_APP"] == token -> :ok
-       true -> render_error(conn, 404, "Invalid token.")
+       true -> render_error(conn, 400, "Invalid token.")
     end
   end
 
