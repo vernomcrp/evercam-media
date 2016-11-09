@@ -19,7 +19,7 @@ defmodule EvercamMedia.OfflinePeriodicReminder do
       camera.last_online_at
       |> Ecto.DateTime.to_erl
       |> Calendar.DateTime.from_erl!("UTC")
-    EvercamMedia.UserMailer.camera_status("offline", camera.owner, camera, "Reminder: ")
+
     case Calendar.DateTime.diff(current_date, last_online_date) do
       {:ok, seconds, _, :after} -> do_send_notification(camera, seconds)
       _ -> 0
@@ -29,14 +29,14 @@ defmodule EvercamMedia.OfflinePeriodicReminder do
   defp do_send_notification(camera, seconds) when seconds < 608_500 do
     cond do
       seconds >= 86_400 && seconds < 90_000 ->
-        EvercamMedia.UserMailer.camera_status("offline", camera.owner, camera, "Reminder: ")
+        EvercamMedia.UserMailer.camera_offline_reminder(camera.owner, camera)
       seconds >= 172_800 && seconds < 176_400 ->
-        EvercamMedia.UserMailer.camera_status("offline", camera.owner, camera, "Reminder: ")
+        EvercamMedia.UserMailer.camera_offline_reminder(camera.owner, camera)
       seconds >= 604_800 && seconds < 608_400 ->
-        EvercamMedia.UserMailer.camera_status("offline", camera.owner, camera, "Reminder: ")
+        EvercamMedia.UserMailer.camera_offline_reminder(camera.owner, camera)
       true ->
         ""
     end
   end
-  defp do_send_notification(camera, seconds), do: Logger.debug "Camera: #{camera.name}, Stop alert, seconds: #{seconds}"
+  defp do_send_notification(_camera, _seconds), do: :noop
 end

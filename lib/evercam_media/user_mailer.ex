@@ -14,7 +14,20 @@ defmodule EvercamMedia.UserMailer do
       text: Phoenix.View.render_to_string(EvercamMedia.EmailView, "confirm.txt", user: user, code: code)
   end
 
-  def camera_status(status, user, camera, is_reminder \\ "") do
+  def camera_status(status, user, camera) do
+    timezone = camera |> Camera.get_timezone
+    current_time = Calendar.DateTime.now_utc |> Calendar.DateTime.shift_zone!(timezone) |> Calendar.Strftime.strftime!("%A, %d %b %Y %l:%M %p")
+    thumbnail = get_thumbnail(camera)
+    Mailgun.Client.send_email @config,
+      to: user.email,
+      subject: "\"#{camera.name}\" camera is now #{status}",
+      from: @from,
+      attachments: get_attachments(thumbnail),
+      html: Phoenix.View.render_to_string(EvercamMedia.EmailView, "#{status}.html", user: user, camera: camera, thumbnail_available: !!thumbnail, year: @year, current_time: current_time),
+      text: Phoenix.View.render_to_string(EvercamMedia.EmailView, "#{status}.txt", user: user, camera: camera)
+  end
+
+  def camera_offline_reminder(user, camera) do
     timezone = camera |> Camera.get_timezone
     current_time =
       camera.last_online_at
@@ -25,11 +38,11 @@ defmodule EvercamMedia.UserMailer do
     thumbnail = get_thumbnail(camera)
     Mailgun.Client.send_email @config,
       to: user.email,
-      subject: "#{is_reminder}\"#{camera.name}\" camera is now #{status}",
+      subject: "Reminder: \"#{camera.name}\" camera has gone offline",
       from: @from,
       attachments: get_attachments(thumbnail),
-      html: Phoenix.View.render_to_string(EvercamMedia.EmailView, "#{status}.html", user: user, camera: camera, thumbnail_available: !!thumbnail, year: @year, current_time: current_time),
-      text: Phoenix.View.render_to_string(EvercamMedia.EmailView, "#{status}.txt", user: user, camera: camera)
+      html: Phoenix.View.render_to_string(EvercamMedia.EmailView, "offline.html", user: user, camera: camera, thumbnail_available: !!thumbnail, year: @year, current_time: current_time),
+      text: Phoenix.View.render_to_string(EvercamMedia.EmailView, "offline.txt", user: user, camera: camera)
   end
 
   def camera_shared_notification(user, camera, sharee_email, message) do
