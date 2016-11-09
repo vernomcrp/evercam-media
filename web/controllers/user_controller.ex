@@ -46,7 +46,8 @@ defmodule EvercamMedia.UserController do
   end
 
   def create(conn, params) do
-    with :ok <- ensure_country(params["country"], conn)
+    with :ok <- ensure_application(conn, params["token"]),
+         :ok <- ensure_country(params["country"], conn)
     do
       requester_ip = user_request_ip(conn)
       user_agent = get_user_agent(conn)
@@ -110,6 +111,16 @@ defmodule EvercamMedia.UserController do
         {:error, changeset} ->
           render_error(conn, 400, Util.parse_changeset(changeset))
       end
+    end
+  end
+
+  def ensure_application(conn, token) when token in [nil, ""], do: render_error(conn, 404, "Invalid token.")
+  def ensure_application(conn, token) do
+    cond do
+       System.get_env["WEB_APP"] == token -> :ok
+       System.get_env["IOS_APP"] == token -> :ok
+       System.get_env["ANDROID_APP"] == token -> :ok
+       true -> render_error(conn, 404, "Invalid token.")
     end
   end
 
