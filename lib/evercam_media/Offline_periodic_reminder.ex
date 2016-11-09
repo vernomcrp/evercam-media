@@ -29,11 +29,11 @@ defmodule EvercamMedia.OfflinePeriodicReminder do
   defp do_send_notification(camera, seconds) when seconds < 608_500 do
     cond do
       seconds >= 86_400 && seconds < 90_000 ->
-        EvercamMedia.UserMailer.camera_offline_reminder(camera.owner, camera)
+        EvercamMedia.UserMailer.camera_offline_reminder(camera.owner, camera, "24 hour")
       seconds >= 172_800 && seconds < 176_400 ->
-        EvercamMedia.UserMailer.camera_offline_reminder(camera.owner, camera)
+        EvercamMedia.UserMailer.camera_offline_reminder(camera.owner, camera, "48 hour")
       seconds >= 604_800 && seconds < 608_400 ->
-        EvercamMedia.UserMailer.camera_offline_reminder(camera.owner, camera)
+        EvercamMedia.UserMailer.camera_offline_reminder(camera.owner, camera, "7 day (final)")
       true ->
         ""
     end

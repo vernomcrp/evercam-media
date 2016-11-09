@@ -27,7 +27,7 @@ defmodule EvercamMedia.UserMailer do
       text: Phoenix.View.render_to_string(EvercamMedia.EmailView, "#{status}.txt", user: user, camera: camera)
   end
 
-  def camera_offline_reminder(user, camera) do
+  def camera_offline_reminder(user, camera, subject) do
     timezone = camera |> Camera.get_timezone
     current_time =
       camera.last_online_at
@@ -38,7 +38,7 @@ defmodule EvercamMedia.UserMailer do
     thumbnail = get_thumbnail(camera)
     Mailgun.Client.send_email @config,
       to: user.email,
-      subject: "Reminder: \"#{camera.name}\" camera has gone offline",
+      subject: "#{subject} reminder: \"#{camera.name}\" camera has gone offline",
       from: @from,
       attachments: get_attachments(thumbnail),
       html: Phoenix.View.render_to_string(EvercamMedia.EmailView, "offline.html", user: user, camera: camera, thumbnail_available: !!thumbnail, year: @year, current_time: current_time),
